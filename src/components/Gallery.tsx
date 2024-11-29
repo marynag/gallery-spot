@@ -11,7 +11,7 @@ type Props = {
   photos: IGallery[];
 };
 
-export const Gallery = async ({ photos }: Props) => {
+export const Gallery = ({ photos }: Props) => {
   const [isMinColumnsAmount, setMinColumnsAmount] = useState(true);
 
   const handleColumnsAmount = () => {

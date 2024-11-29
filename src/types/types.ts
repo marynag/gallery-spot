@@ -27,7 +27,6 @@ export interface IGallery {
   description: string | null;
   urls: Urls;
   likes: number;
-  topic_submissions: any;
   asset_type: string;
   user: IUser;
 }
