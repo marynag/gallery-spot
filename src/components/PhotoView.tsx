@@ -10,7 +10,10 @@ type PhotoViewProps = {
 
 export const PhotoView = ({ photos, isMinColumnsAmount }: PhotoViewProps) => {
   return (
-    <div className="gap-4" style={{ columns: isMinColumnsAmount ? 3 : 5 }}>
+    <div
+      className="gap-4 self-center"
+      style={{ columns: isMinColumnsAmount ? 3 : 5 }}
+    >
       {photos.map((photo, index) => (
         <div key={index} className="mb-4 break-inside-avoid">
           <Image
