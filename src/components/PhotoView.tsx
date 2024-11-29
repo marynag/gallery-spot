@@ -17,7 +17,7 @@ export const PhotoView = ({ photos, isMinColumnsAmount }: PhotoViewProps) => {
       {photos.map((photo, index) => (
         <div key={index} className="mb-4 break-inside-avoid">
           <Image
-            className="w-full h-auto object-covers"
+            className="w-full h-auto object-covers cursor-pointer transition ease-in-out delay-150   hover:scale-105 duration-200"
             src={photo.urls.small}
             alt={photo.description ?? ''}
             width={photo.width}
