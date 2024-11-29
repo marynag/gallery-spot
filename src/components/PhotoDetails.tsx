@@ -4,6 +4,7 @@ import { FaCalendarAlt, FaPalette, FaHeart, FaUser } from 'react-icons/fa';
 
 import { IPhoto } from '@/types/types';
 import Link from 'next/link';
+import { formatTimestamp } from './utlis';
 
 type PhotoDetailsProps = {
   photoData: IPhoto;
@@ -14,7 +15,7 @@ export const PhotoDetails = ({ photoData }: PhotoDetailsProps) => {
     {
       icon: <FaCalendarAlt />,
       title: 'Published at',
-      value: photoData.created_at,
+      value: formatTimestamp(photoData.created_at),
     },
     {
       icon: <FaPalette />,
@@ -36,14 +37,16 @@ export const PhotoDetails = ({ photoData }: PhotoDetailsProps) => {
 
   return (
     <>
-      <Image
-        className="w-56 h-auto object-covers cursor-pointer"
-        src={photoData.urls.small}
-        alt={photoData.description ?? ''}
-        width={photoData.width}
-        height={photoData.height}
-        loading="lazy"
-      />
+      <div className="xl:w-1/2 md:w-1/3 w-2/3 flex justify-center">
+        <Image
+          className="w-auto h-[70%] object-cover cursor-pointer rounded-lg max-w-full max-h-[70vh]"
+          src={photoData.urls.small}
+          alt={photoData.description ?? ''}
+          width={photoData.width}
+          height={photoData.height}
+          loading="lazy"
+        />
+      </div>
       <p>{photoData.description}</p>
       <div>
         {details.map((detail, index) => (
@@ -54,7 +57,7 @@ export const PhotoDetails = ({ photoData }: PhotoDetailsProps) => {
           </div>
         ))}
       </div>
-      <div className="w-full flex gap-3 flex-wrap">
+      <div className="w-full flex gap-3 flex-wrap justify-center">
         {photoData?.tags &&
           photoData?.tags.length &&
           photoData?.tags.map((tag, index) => (

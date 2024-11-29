@@ -46,7 +46,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
 
   return (
     <div
-      className={`w-2/5 py-1 px-4 border border-gray-300 rounded-lg flex items-center gap-4`}
+      className={`md:w-2/5 w-full py-1 px-4 border border-gray-300 rounded-lg flex items-center gap-4`}
     >
       <FaSearch />
       <input
@@ -54,7 +54,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
         placeholder={placeholder}
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className="focus:outline-none w-full"
+        className="focus:outline-none w-full md:text-base text-lg"
       />
       <RxCross2
         onClick={deleteSearchQuery}
