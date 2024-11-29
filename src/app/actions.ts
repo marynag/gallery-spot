@@ -1,6 +1,7 @@
 'use server';
 
 import { ACCESS_KEY, API_URL } from '@/constants/api';
+import { IPhoto } from '@/types/types';
 
 interface IRequest {
   page?: number;
@@ -66,7 +67,7 @@ export async function getPhoto({ id }: IGetPhoto) {
 
     const data = await response.json();
     return {
-      data: data ?? [],
+      data: data,
       success: true,
     };
   } catch (e: unknown) {
@@ -78,5 +79,57 @@ export async function getPhoto({ id }: IGetPhoto) {
       success: false,
       error: errorMessage,
     };
+  }
+}
+
+export async function getCollection({ page = 1, query }: IRequest) {
+
+
+  if (query) {
+    try {
+      const endpoint = `${API_URL}/search/collections/?page=${
+        page ?? 1
+      }&query=${query ?? ''}&client_id=${ACCESS_KEY}`;
+
+      const response = await fetch(endpoint);
+
+      const data = await response.json();
+      return {
+        data: data.results ?? [],
+        success: true,
+      };
+    } catch (e: unknown) {
+      const errorMessage = e instanceof Error ? e.message : String(e);
+      console.error('Error fetching', errorMessage);
+
+      return {
+        data: [],
+        success: false,
+        error: errorMessage,
+      };
+    }
+  } else {
+    try {
+      const endpoint = `${API_URL}/collections/?page=${page ?? 1}&query=${
+        query ?? ''
+      }&client_id=${ACCESS_KEY}`;
+
+      const response = await fetch(endpoint);
+
+      const data = await response.json();
+      return {
+        data: data ?? [],
+        success: true,
+      };
+    } catch (e: unknown) {
+      const errorMessage = e instanceof Error ? e.message : String(e);
+      console.error('Error fetching', errorMessage);
+
+      return {
+        data: [],
+        success: false,
+        error: errorMessage,
+      };
+    }
   }
 }

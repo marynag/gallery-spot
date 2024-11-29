@@ -13,7 +13,7 @@ export const FilterBar = ({
   toggleOnChange,
 }: FilterBarProps) => {
   return (
-    <div className="w-full flex justify-between">
+    <div className="w-full flex md:justify-between flex-wrap-reverse gap-3 md:px-24 justify-center">
       <SearchInput />
       <Toggle
         checked={toggleChecked}
