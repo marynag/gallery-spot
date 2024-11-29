@@ -1,11 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-
-import { IGallery } from '@/types/types';
 import Link from 'next/link';
 
+import { IPhoto } from '@/types/types';
+
 type PhotoViewProps = {
-  photos: IGallery[];
+  photos: IPhoto[];
   isMinColumnsAmount: boolean;
 };
 

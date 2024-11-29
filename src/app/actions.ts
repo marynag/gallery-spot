@@ -7,9 +7,6 @@ interface IRequest {
   page?: number;
   query?: string;
 }
-interface IResponse {
-  results: IPhoto[];
-}
 
 export async function getPhotos({ page = 1, query }: IRequest) {
   if (query) {
@@ -20,7 +17,7 @@ export async function getPhotos({ page = 1, query }: IRequest) {
 
       const response = await fetch(endpoint);
 
-      const data: IResponse = await response.json();
+      const data = await response.json();
       return {
         data: data.results ?? [],
         success: true,
@@ -41,7 +38,7 @@ export async function getPhotos({ page = 1, query }: IRequest) {
         `${API_URL}/photos/?client_id=${ACCESS_KEY}&page=${page ?? 1}`
       );
 
-      const data: IResponse = await response.json();
+      const data = await response.json();
       return {
         data: data ?? [],
         success: true,
@@ -86,26 +83,53 @@ export async function getPhoto({ id }: IGetPhoto) {
 }
 
 export async function getCollection({ page = 1, query }: IRequest) {
-  try {
-    const endpoint = `${API_URL}/search/collections/?page=${page ?? 1}&query=${
-      query ?? ''
-    }&client_id=${ACCESS_KEY}`;
 
-    const response = await fetch(endpoint);
 
-    const data = await response.json();
-    return {
-      data: data.results ?? [],
-      success: true,
-    };
-  } catch (e: unknown) {
-    const errorMessage = e instanceof Error ? e.message : String(e);
-    console.error('Error fetching', errorMessage);
+  if (query) {
+    try {
+      const endpoint = `${API_URL}/search/collections/?page=${
+        page ?? 1
+      }&query=${query ?? ''}&client_id=${ACCESS_KEY}`;
 
-    return {
-      data: [],
-      success: false,
-      error: errorMessage,
-    };
+      const response = await fetch(endpoint);
+
+      const data = await response.json();
+      return {
+        data: data.results ?? [],
+        success: true,
+      };
+    } catch (e: unknown) {
+      const errorMessage = e instanceof Error ? e.message : String(e);
+      console.error('Error fetching', errorMessage);
+
+      return {
+        data: [],
+        success: false,
+        error: errorMessage,
+      };
+    }
+  } else {
+    try {
+      const endpoint = `${API_URL}/collections/?page=${page ?? 1}&query=${
+        query ?? ''
+      }&client_id=${ACCESS_KEY}`;
+
+      const response = await fetch(endpoint);
+
+      const data = await response.json();
+      return {
+        data: data ?? [],
+        success: true,
+      };
+    } catch (e: unknown) {
+      const errorMessage = e instanceof Error ? e.message : String(e);
+      console.error('Error fetching', errorMessage);
+
+      return {
+        data: [],
+        success: false,
+        error: errorMessage,
+      };
+    }
   }
 }
