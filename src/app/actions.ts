@@ -54,3 +54,29 @@ export async function getPhotos({ page = 1, query }: IRequest) {
     }
   }
 }
+
+interface IGetPhoto {
+  id: string;
+}
+export async function getPhoto({ id }: IGetPhoto) {
+  try {
+    const response = await fetch(
+      `${API_URL}/photos/${id}/?client_id=${ACCESS_KEY}`
+    );
+
+    const data = await response.json();
+    return {
+      data: data ?? [],
+      success: true,
+    };
+  } catch (e: unknown) {
+    const errorMessage = e instanceof Error ? e.message : String(e);
+    console.error('Error fetching', errorMessage);
+
+    return {
+      data: [],
+      success: false,
+      error: errorMessage,
+    };
+  }
+}

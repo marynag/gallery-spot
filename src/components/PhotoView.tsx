@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 import { IGallery } from '@/types/types';
+import Link from 'next/link';
 
 type PhotoViewProps = {
   photos: IGallery[];
@@ -16,14 +17,16 @@ export const PhotoView = ({ photos, isMinColumnsAmount }: PhotoViewProps) => {
     >
       {photos.map((photo, index) => (
         <div key={index} className="mb-4 break-inside-avoid">
-          <Image
-            className="w-full h-auto object-covers cursor-pointer transition ease-in-out delay-150   hover:scale-105 duration-200"
-            src={photo.urls.small}
-            alt={photo.description ?? ''}
-            width={photo.width}
-            height={photo.height}
-            loading="lazy"
-          />
+          <Link href={`/photo/${photo.id}`}>
+            <Image
+              className="w-full h-auto object-covers cursor-pointer transition ease-in-out delay-150   hover:scale-105 duration-200"
+              src={photo.urls.small}
+              alt={photo.description ?? ''}
+              width={photo.width}
+              height={photo.height}
+              loading="lazy"
+            />
+          </Link>
         </div>
       ))}
     </div>

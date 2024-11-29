@@ -16,6 +16,11 @@ interface IUser {
   portfolio_url: string;
 }
 
+interface ITag {
+  type: string;
+  title: string;
+}
+
 export interface IGallery {
   id: string;
   slug: string;
@@ -27,7 +32,7 @@ export interface IGallery {
   description: string | null;
   urls: Urls;
   likes: number;
-  topic_submissions: any;
   asset_type: string;
   user: IUser;
+  tags: ITag[];
 }
