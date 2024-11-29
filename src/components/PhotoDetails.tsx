@@ -2,10 +2,11 @@ import React from 'react';
 import Image from 'next/image';
 import { FaCalendarAlt, FaPalette, FaHeart, FaUser } from 'react-icons/fa';
 
-import { IGallery } from '@/types/types';
+import { IPhoto } from '@/types/types';
+import Link from 'next/link';
 
 type PhotoDetailsProps = {
-  photoData: IGallery;
+  photoData: IPhoto;
 };
 
 export const PhotoDetails = ({ photoData }: PhotoDetailsProps) => {
@@ -54,14 +55,18 @@ export const PhotoDetails = ({ photoData }: PhotoDetailsProps) => {
         ))}
       </div>
       <div className="w-full flex gap-3 flex-wrap">
-        {photoData.tags.map((tag, index) => (
-          <div
-            key={index}
-            className="bg-gray-200 rounded-md px-3 py-1 hover:bg-slate-300 cursor-pointer"
-          >
-            {tag.title}
-          </div>
-        ))}
+        {photoData?.tags &&
+          photoData?.tags.length &&
+          photoData?.tags.map((tag, index) => (
+            <Link href={`/collection?query=${tag.title}`}>
+              <div
+                key={index}
+                className="bg-gray-200 rounded-md px-3 py-1 hover:bg-slate-300 cursor-pointer"
+              >
+                {tag.title}
+              </div>
+            </Link>
+          ))}
       </div>
     </>
   );

@@ -2,13 +2,13 @@
 
 import React, { useState } from 'react';
 
-import { IGallery } from '@/types/types';
 import { FilterBar } from './FilterBar';
 import { PhotoView } from './PhotoView';
 import { Pagination } from './Pagination';
+import { IPhoto } from '@/types/types';
 
 type Props = {
-  photos: IGallery[];
+  photos: IPhoto[];
 };
 
 export const Gallery = ({ photos }: Props) => {

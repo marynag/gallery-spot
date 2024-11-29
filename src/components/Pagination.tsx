@@ -28,7 +28,6 @@ export const Pagination = () => {
   }
 
   const handleMoveBack = () => {
-    console.log('back');
     const newPage = page ? String(Number(page) - 1) : '1';
 
     params.set('page', newPage);
