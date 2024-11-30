@@ -36,10 +36,10 @@ export const PhotoDetails = ({ photoData }: PhotoDetailsProps) => {
   ];
 
   return (
-    <>
-      <div className="xl:w-1/2 md:w-1/3 w-2/3 flex justify-center">
+    <div className="flex flex-col md:flex-row items-center gap-6 border rounded-xl md:p-10 p-6 shadow-xl">
+      <div className="xl:w-1/2 w-2/3 flex justify-center">
         <Image
-          className="w-auto h-[70%] object-cover cursor-pointer rounded-lg max-w-full max-h-[70vh]"
+          className="w-auto  object-cover cursor-pointer rounded-lg max-w-full"
           src={photoData.urls.small}
           alt={photoData.description ?? ''}
           width={photoData.width}
@@ -47,30 +47,32 @@ export const PhotoDetails = ({ photoData }: PhotoDetailsProps) => {
           loading="lazy"
         />
       </div>
-      <p>{photoData.description}</p>
-      <div>
-        {details.map((detail, index) => (
-          <div key={index} className="flex gap-2 items-center">
-            <span>{detail.icon}</span>
-            <span>{detail.title}</span>
-            <span>{detail.value}</span>
-          </div>
-        ))}
-      </div>
-      <div className="w-full flex gap-3 flex-wrap justify-center">
-        {photoData?.tags &&
-          photoData?.tags.length &&
-          photoData?.tags.map((tag, index) => (
-            <Link href={`/collection?query=${tag.title}`}>
-              <div
-                key={index}
-                className="bg-gray-200 rounded-md px-3 py-1 hover:bg-slate-300 cursor-pointer"
-              >
-                {tag.title}
-              </div>
-            </Link>
+      <div className="flex flex-col md:justify-start md:px-0 px-4 justify-center">
+        <p>{photoData.description}</p>
+        <div>
+          {details.map((detail, index) => (
+            <div key={index} className="flex gap-2 items-center">
+              <span>{detail.icon}</span>
+              <span>{detail.title}</span>
+              <span>{detail.value}</span>
+            </div>
           ))}
+        </div>
+        <div className="w-full flex gap-3 flex-wrap justify-center mt-6">
+          {photoData?.tags &&
+            photoData?.tags.length &&
+            photoData?.tags.map((tag, index) => (
+              <Link href={`/collection?query=${tag.title}`}>
+                <div
+                  key={index}
+                  className="bg-gray-200 rounded-md px-3 py-1 hover:bg-slate-300 cursor-pointer"
+                >
+                  {tag.title}
+                </div>
+              </Link>
+            ))}
+        </div>
       </div>
-    </>
+    </div>
   );
 };

@@ -35,7 +35,7 @@ export const Pagination = () => {
   };
 
   return (
-    <div className="flex w-full justify-center gap-10 py-10">
+    <div className="flex w-full justify-center gap-10 ">
       <button
         onClick={handleMoveBack}
         className={`flex items-center justify-center px-4 h-10 text-base font-medium  bg-indigo-600 border border-indigo-700 rounded-lg
