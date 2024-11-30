@@ -20,7 +20,7 @@ export async function getPhotos({ page = 1, query }: IRequest) {
       return {
         data: data.results ?? [],
         success: true,
-        pages: data.total_pages,
+        pages: data?.total_pages,
       };
     } catch (e: unknown) {
       const errorMessage = e instanceof Error ? e.message : String(e);
@@ -95,7 +95,7 @@ export async function getCollection({ page = 1, query }: IRequest) {
       return {
         data: data.results ?? [],
         success: true,
-        pages: data.total_pages,
+        pages: data?.total_pages,
       };
     } catch (e: unknown) {
       const errorMessage = e instanceof Error ? e.message : String(e);
