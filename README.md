@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gallery Spot
 
-## Getting Started
+A simple web application inspired by Unsplash, allowing users to explore, search, and view collections of stunning photos. The site is built with responsive design principles and supports server-side rendering for optimal performance.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## **Features**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Gallery Layouts**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   - Switch between 3-column and 5-column gallery displays with a button toggle.
+   - Images dynamically adjust to fill space, mimicking Unsplash's layout.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Pagination**
 
-## Learn More
+   - Navigate through gallery pages seamlessly.
 
-To learn more about Next.js, take a look at the following resources:
+3. **Image Details**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   - Clicking on an image opens a detailed view page with additional info such as:
+     - Description
+     - Tags
+     - Likes
+     - Photo details
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Tag-Based Collections**
 
-## Deploy on Vercel
+   - Clickable tags on image detail pages lead to curated collections of related images.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+5. **Search Functionality**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   - Perform searches to find specific images by keyword.
+
+6. **Unsplash-inspired UI**
+
+   - Clean and modern design, closely resembling Unsplash's styling.
+
+7. **Responsive and Adaptive Design**
+
+8. **Server-Side Rendering (SSR)**
+
+---
+
+## **Technologies Used**
+
+- **Next.js**: Framework for server-side rendering and static site generation.
+- **React**: Component-based UI library for building the frontend.
+- **Tailwind CSS**: For styling the application with a focus on responsiveness.
+
+---
+
+## **Setup Instructions**
+
+1. Install dependencies:
+   ```bash
+   yarn install
+   ```
+2. Create a `.env` file in the project root and add your Unsplash API key:
+   ```plaintext
+   NEXT_PUBLIC_ACCESS_KEY=your_access_key
+   NEXT_PUBLIC_API_URL=your_api_url
+   ```
+3. Start the development server:
+   ```bash
+   yarn dev
+   ```
+4. Open your browser and visit:
+   ```plaintext
+   http://localhost:3000
+   ```
