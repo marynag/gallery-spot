@@ -26,6 +26,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
 
     if (debouncedSearchQuery) {
       current.set('query', debouncedSearchQuery);
+      current.delete('page');
     } else {
       current.delete('query');
     }
@@ -37,8 +38,10 @@ export const SearchInput: React.FC<SearchInputProps> = ({
   }, [debouncedSearchQuery, searchParams, router]);
 
   useEffect(() => {
-    updateSearchParams();
-  }, [debouncedSearchQuery, updateSearchParams]);
+    if (debouncedSearchQuery !== initialQuery) {
+      updateSearchParams();
+    }
+  }, [debouncedSearchQuery, initialQuery, updateSearchParams]);
 
   const deleteSearchQuery = () => {
     setSearchQuery('');
