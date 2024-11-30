@@ -1,7 +1,6 @@
 'use server';
 
 import { ACCESS_KEY, API_URL } from '@/constants/api';
-import { IPhoto } from '@/types/types';
 
 interface IRequest {
   page?: number;
@@ -21,6 +20,7 @@ export async function getPhotos({ page = 1, query }: IRequest) {
       return {
         data: data.results ?? [],
         success: true,
+        pages: data?.total_pages,
       };
     } catch (e: unknown) {
       const errorMessage = e instanceof Error ? e.message : String(e);
@@ -83,8 +83,6 @@ export async function getPhoto({ id }: IGetPhoto) {
 }
 
 export async function getCollection({ page = 1, query }: IRequest) {
-
-
   if (query) {
     try {
       const endpoint = `${API_URL}/search/collections/?page=${
@@ -97,6 +95,7 @@ export async function getCollection({ page = 1, query }: IRequest) {
       return {
         data: data.results ?? [],
         success: true,
+        pages: data?.total_pages,
       };
     } catch (e: unknown) {
       const errorMessage = e instanceof Error ? e.message : String(e);

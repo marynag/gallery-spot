@@ -11,9 +11,10 @@ import { Error } from './Error';
 type Props = {
   photos: IPhoto[];
   success: boolean;
+  pages: number | undefined;
 };
 
-export const Gallery = ({ photos, success }: Props) => {
+export const Gallery = ({ photos, success, pages }: Props) => {
   const [isMinColumnsAmount, setMinColumnsAmount] = useState(true);
 
   const handleColumnsAmount = () => {
@@ -30,12 +31,13 @@ export const Gallery = ({ photos, success }: Props) => {
         toggleOnChange={handleColumnsAmount}
       />
       {success && photos.length ? (
-        <PhotoView photos={photos} isMinColumnsAmount={isMinColumnsAmount} />
+        <>
+          <PhotoView photos={photos} isMinColumnsAmount={isMinColumnsAmount} />{' '}
+          <Pagination pages={pages} />
+        </>
       ) : (
         <Error text={errorMessage} />
       )}
-
-      <Pagination />
     </>
   );
 };
