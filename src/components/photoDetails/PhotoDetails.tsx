@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { FaCalendarAlt, FaPalette, FaHeart, FaUser } from 'react-icons/fa';
-import styles from './photoDetails.module.css';
+import styles from './PhotoDetails.module.css';
 
 import { IPhoto } from '@/types/types';
 import Link from 'next/link';
