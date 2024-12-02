@@ -1,0 +1,33 @@
+.container {
+  display: grid;
+  grid-template-rows: 20px 1fr 20px;
+  justify-items: center;
+  min-height: 100vh;
+  padding: 2rem 2rem 5rem;
+  gap: 4rem;
+  font-family: var(--font-geist-sans);
+  width: 100%;
+  gap: 0rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 5rem;
+    gap: 4rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    gap: 4rem;
+  }
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  grid-row-start: 2;
+  align-items: center;
+  width: 100%;
+}

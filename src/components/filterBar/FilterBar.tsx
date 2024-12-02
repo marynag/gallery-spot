@@ -1,7 +1,7 @@
 import React from 'react';
-
-import SearchInput from './SearchInput';
-import { Toggle } from './Toggle';
+import { Toggle } from '../toogle/Toggle';
+import SearchInput from '../searchInput/SearchInput';
+import styles from './filterBar.module.css';
 
 type FilterBarProps = {
   toggleChecked: boolean;
@@ -13,7 +13,7 @@ export const FilterBar = ({
   toggleOnChange,
 }: FilterBarProps) => {
   return (
-    <div className="w-full flex md:justify-between flex-wrap-reverse gap-3 md:px-24 justify-center">
+    <div className={styles.filterBar}>
       <SearchInput />
       <Toggle
         checked={toggleChecked}

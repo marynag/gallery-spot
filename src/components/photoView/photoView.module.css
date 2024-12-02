@@ -1,0 +1,33 @@
+.photoContainer {
+  align-self: center;
+  gap: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  .photoContainer {
+    gap: 1rem;
+  }
+}
+
+.photoItem {
+  margin-bottom: 0.25rem;
+  break-inside: avoid;
+}
+
+@media (min-width: 768px) {
+  .photoItem {
+    margin-bottom: 1rem;
+  }
+}
+
+.photoImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.photoImage:hover {
+  transform: scale(1.05);
+}
