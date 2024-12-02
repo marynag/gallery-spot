@@ -1,0 +1,39 @@
+.searchContainer {
+  width: 100%;
+  padding: 0.25rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .searchContainer {
+    width: 40%;
+  }
+}
+
+.searchInput {
+  width: 100%;
+  font-size: 1.125rem;
+  outline: none;
+}
+
+@media (min-width: 768px) {
+  .searchInput {
+    font-size: 1rem;
+  }
+}
+
+.crossIcon {
+  cursor: pointer;
+  color: #6b7280;
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: color 0.2s ease-in-out;
+}
+
+.crossIcon:hover {
+  color: #374151;
+}

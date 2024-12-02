@@ -1,10 +1,12 @@
+import styles from '@/app/common.module.css';
+
 import { Suspense } from 'react';
 
 import { getPhoto } from '@/app/actions';
-import { PhotoDetails } from '@/components/PhotoDetails';
-import { Error } from '@/components/Error';
-import { GoBack } from '@/components/GoBack';
-import { Loading } from '@/components/Loading';
+import { PhotoDetails } from '@/components/photoDetails/PhotoDetails';
+import { Error } from '@/components/error/Error';
+import { GoBack } from '@/components/goBack/GoBack';
+import { Loading } from '@/components/loading/Loading';
 
 interface PageProps {
   params: IParams;
@@ -18,8 +20,8 @@ export default async function Page({ params }: PageProps) {
   const { data, success } = await getPhoto({ id: photoId });
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] ] justify-items-center min-h-screen p-8 pb-20 md:gap-16  sm:p-20 font-[family-name:var(--font-geist-sans)] w-full">
-      <main className="flex flex-col gap-8 row-start-2 items-center  w-full">
+    <div className={styles.container}>
+      <main className={styles.mainContent}>
         <GoBack />
         <Suspense fallback={<Loading />}>
           {success && !data?.length ? (

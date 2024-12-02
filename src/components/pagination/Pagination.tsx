@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import styles from './pagination.module.css';
 
 interface PaginationProps {
   pages: number | undefined;
@@ -47,15 +48,10 @@ export const Pagination = ({ pages }: PaginationProps) => {
   };
 
   return (
-    <div className="flex w-full justify-center gap-10 ">
+    <div className={styles.paginationContainer}>
       <button
         onClick={handleMoveBack}
-        className={`flex items-center justify-center px-4 h-10 text-base font-medium  border border-indigo-700 rounded-lg
-        ${
-          isFirstPage
-            ? 'cursor-not-allowed bg-indigo-400'
-            : 'hover:bg-indigo-500 bg-indigo-600'
-        }`}
+        className={styles.button}
         disabled={isFirstPage}
       >
         <FaArrowLeft color={'white'} />
@@ -63,12 +59,7 @@ export const Pagination = ({ pages }: PaginationProps) => {
 
       <button
         onClick={handleMoveForward}
-        className={`flex items-center justify-center px-4 h-10 text-base font-medium  border border-indigo-700 rounded-lg
-          ${
-            isLastPage
-              ? 'cursor-not-allowed bg-indigo-400'
-              : 'hover:bg-indigo-500 bg-indigo-600'
-          }`}
+        className={styles.button}
         disabled={isLastPage}
       >
         <FaArrowRight color={'white'} />

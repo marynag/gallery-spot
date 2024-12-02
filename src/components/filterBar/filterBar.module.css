@@ -1,0 +1,15 @@
+.filterBar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .filterBar {
+    justify-content: space-between;
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}

@@ -4,6 +4,8 @@ import { useRouter } from 'next/navigation';
 
 import { FaArrowLeft } from 'react-icons/fa';
 
+import styles from './goBack.module.css';
+
 export const GoBack = () => {
   const router = useRouter();
 
@@ -11,7 +13,7 @@ export const GoBack = () => {
     router.back();
   };
   return (
-    <div className="absolute top-3 left-5 md:top-20 md:left-20 h-6 w-6">
+    <div className={styles.goBackContainer}>
       <FaArrowLeft onClick={handleGoBack} size={'30'} />
     </div>
   );

@@ -3,7 +3,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { FaSearch } from 'react-icons/fa';
 import { RxCross2 } from 'react-icons/rx';
 
-import { useDebounce } from '../hooks/useDebounce';
+import styles from './searchInput.module.css';
+
+import { useDebounce } from '../../hooks/useDebounce';
 
 interface SearchInputProps {
   placeholder?: string;
@@ -48,21 +50,16 @@ export const SearchInput: React.FC<SearchInputProps> = ({
   };
 
   return (
-    <div
-      className={`md:w-2/5 w-full py-1 px-4 border border-gray-300 rounded-lg flex items-center gap-4`}
-    >
+    <div className={styles.searchContainer}>
       <FaSearch />
       <input
         type="text"
         placeholder={placeholder}
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        className="focus:outline-none w-full md:text-base text-lg"
+        className={styles.searchInput}
       />
-      <RxCross2
-        onClick={deleteSearchQuery}
-        className={`cursor-pointer text-gray-500 hover:text-gray-700 h-6 w-6 hove:text-gray-700`}
-      />
+      <RxCross2 onClick={deleteSearchQuery} className={styles.crossIcon} />
     </div>
   );
 };

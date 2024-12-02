@@ -1,0 +1,34 @@
+.error {
+  color: white;
+  background-color: red;
+}
+
+.errorContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.errorBox {
+  background-color: rgb(254 226 226);
+  border: 1px solid rgb(254 202 202);
+  color: rgb(185 28 28);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  margin-top: 2.5rem;
+  position: relative;
+}
+
+.errorHeader {
+  font-weight: 700;
+}
+
+.errorText {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .errorText {
+    display: inline;
+  }
+}
